@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-func CreatePost(c *gin.Context) {
+func CreateSinglePost(c *gin.Context) {
 	// Get data from request
 	var newPost struct{
 		Title string
