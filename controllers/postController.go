@@ -31,3 +31,14 @@ func CreatePost(c *gin.Context) {
 		"post": post,
 	})
 }
+
+func ShowAllPosts(c *gin.Context) {
+	// Get all posts from db
+	var posts []models.Post
+	initializers.DB.Find(&posts)
+
+	// Return all posts
+	c.JSON(200, gin.H{
+		"posts": posts,
+	})
+}
