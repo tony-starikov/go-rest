@@ -42,3 +42,17 @@ func ShowAllPosts(c *gin.Context) {
 		"posts": posts,
 	})
 }
+
+func ShowSinglePost(c *gin.Context) {
+	// Get post id from url
+	id := c.Param("id")
+
+	// Get the post from db
+	var post models.Post
+	initializers.DB.First(&post, id)
+
+	// Return the post
+	c.JSON(200, gin.H{
+		"post": post,
+	})
+}
