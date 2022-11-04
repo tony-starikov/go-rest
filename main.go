@@ -18,6 +18,7 @@ func main() {
 	r.GET("/posts", controllers.ShowAllPosts)
 	r.GET("/posts/:id", controllers.ShowSinglePost)
 	r.PUT("/posts/:id", controllers.UpdateSinglePost)
+	r.DELETE("/posts/:id", controllers.DeleteSinglePost)
 
 	r.Run()
 }
