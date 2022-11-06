@@ -1,7 +1,7 @@
 package initializers
 
 import (
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
 	"os"
@@ -12,9 +12,11 @@ var DB *gorm.DB
 func ConnectToDatabase() {
 	var err error
 
-	dbFileName := os.Getenv("DB_FILE")
+	// Elephantsql postgres test db
+	dsn := os.Getenv("DB_URL")
 
-	DB, err = gorm.Open(sqlite.Open(dbFileName), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+
 	if err != nil {
 		log.Fatal("Failed to connect to database")
 	}
