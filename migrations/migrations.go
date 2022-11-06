@@ -1,4 +1,4 @@
-package main
+package migrations
 
 import (
 	"fmt"
@@ -7,12 +7,7 @@ import (
 	"log"
 )
 
-func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDatabase()
-}
-
-func main() {
+func Migrate() {
 	err := initializers.DB.AutoMigrate(&models.Post{})
 
 	if err != nil {

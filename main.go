@@ -4,11 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/tony-starikov/go-rest/controllers"
 	"github.com/tony-starikov/go-rest/initializers"
+	"github.com/tony-starikov/go-rest/migrations"
 )
 
 func init() {
 	initializers.LoadEnvVariables()
 	initializers.ConnectToDatabase()
+	migrations.Migrate()
 }
 
 func main() {
